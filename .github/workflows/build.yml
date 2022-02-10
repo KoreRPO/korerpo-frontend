@@ -8,12 +8,13 @@ on:
 jobs:
   build:
     runs-on: ubuntu-20.04
-    strategy:
-      matrix:
-        node-version: [17.x]
 
     steps:
       - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "17.x"
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
@@ -22,6 +23,7 @@ jobs:
 
       - name: Install dependencies
         run: |
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.REGISTRY_TOKEN }}" >> ~/.npmrc
           npm ci
 
       - name: Run tests
@@ -37,3 +39,4 @@ jobs:
         with:
           publish_dir: ./_site
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          cname: korerpo.dryan.io
