@@ -57,6 +57,9 @@ module.exports = ({
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&display=swap">
       <link rel="stylesheet" href="${mnmlCSS}">
       <link rel="stylesheet" href="/assets/screen.css">
+      <!-- Start of HubSpot Embed Code -->
+      <script type="text/javascript" id="hs-script-loader" async defer src="//js-na1.hs-scripts.com/21430261.js"></script>
+      <!-- End of HubSpot Embed Code -->
     </head>
     <body>
       <a href="#main-content" class="skip-link reader-only">
