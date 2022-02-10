@@ -1,0 +1,28 @@
+---
+layout: base.11ty.js
+title: Contact Us
+html_classes: contact-page
+---
+<div class="wrapper">
+    <header>
+        <h1>Let's get started.</h1>
+    </header>
+
+    <form method="GET" action="mailto:info@korerpo.com">
+        <p>
+            <label for="id_name">Name <abbr title="Required">*</abbr></label>
+            <input name="name" type="text" id="id_name" required>
+        </p>
+        <p>
+            <label for="id_email">Email <abbr title="Required">*</abbr></label>
+            <input name="email" type="email" id="id_email" required>
+        </p>
+        <p>
+            <label for="id_message">Message <abbr title="Required">*</abbr></label>
+            <textarea name="body" rows="10" id="id_message" required></textarea>
+        </p>
+        <p>
+            <button type="submit" class="outline">Submit</button>
+        </p>
+    </form>
+</div>

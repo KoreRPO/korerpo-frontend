@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "commonjs",
+    "resolveJsonModule": true,
+    "rootDir": "./src/app",
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "ESNEXT"
+  },
+  "exclude": ["./index.ts"]
+}
