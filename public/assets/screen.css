@@ -441,9 +441,9 @@ a[id="approach"] {
 }
 
 .bio__text {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: var(--spacing);
-  grid-auto-flow: row;
 }
 
 .bio__text header {
