@@ -11,7 +11,7 @@
     "watch:11ty": "eleventy --serve --quiet",
     "build:ts": "tsc --project tsconfig.json --outDir src/_js",
     "watch:ts": "npm run build:ts --watch",
-    "test": "jest"
+    "test": "jest --passWithNoTests"
   },
   "author": "Dan Ryan <d@dryan.com>",
   "license": "UNLICENSED",
