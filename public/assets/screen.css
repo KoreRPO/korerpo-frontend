@@ -200,7 +200,7 @@ body > main.container {
   --button-color: var(--body-color);
 }
 
-:where(button, .button).blue-light.outline:where(:not(:hover, :active, :focus, :focus-visible)) {
+:where(button, .button).blue-light.outline:where(:not(:hover, :active, :focus)) {
   --button-color: var(--blue-light);
 }
 
@@ -210,11 +210,7 @@ body > main.container {
   --button-color: white;
 }
 
-:where(button, .button).blue-medium.outline:where(:hover, :active, :focus, :focus-visible) {
-  --button-color: white;
-}
-
-:where(button, .button).blue-medium.outline:where(:not(:hover, :active, :focus, :focus-visible)) {
+:where(button, .button).blue-medium.outline:where(:not(:hover, :active, :focus)) {
   --button-color: var(--blue-medium);
 }
 
@@ -224,7 +220,7 @@ body > main.container {
   --button-color: var(--body-color);
 }
 
-:where(button, .button).blue-dark.outline:where(:not(:hover, :active, :focus, :focus-visible)) {
+:where(button, .button).blue-dark.outline:where(:not(:hover, :active, :focus)) {
   --button-color: var(--blue-dark);
 }
 
@@ -270,7 +266,7 @@ body > main.container {
   --button-color--hover: var(--blue-medium);
 }
 
-.jumbotron__actions .button.white:where(:hover, :active, :focus, :focus-visible) {
+.jumbotron__actions .button.white:where(:hover, :active, :focus) {
   --button-color: var(--blue-medium);
 }
 
