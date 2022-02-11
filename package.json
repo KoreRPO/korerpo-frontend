@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@dryan-llc/mnml.css": "^1.0.0-alpha.5",
-    "@dryan-llc/mnml.js": "^1.2.0",
+    "@dryan-llc/mnml.js": "^1.3.2",
     "@korerpo/cms": "^1.0.12"
   }
 }
