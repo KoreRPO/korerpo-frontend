@@ -53,7 +53,7 @@ const mutationObserver = new MutationObserver((entries) => {
 
 mutationObserver.observe(document.documentElement, { childList: true, subtree: true });
 
-window.addEventListener("unload", () => {
+mnml.listen("beforeunload", () => {
   mutationObserver.disconnect();
   intersectionObserver.disconnect();
 });

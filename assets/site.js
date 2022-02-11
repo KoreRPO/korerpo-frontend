@@ -109,7 +109,10 @@
       }
       _readyListener.loaded = true;
     });
-    const listen = (eventName, selector, callback, replace = true) => {
+    function listen(eventName, selector, callback, replace) {
+      if (typeof replace === "undefined") {
+        replace = true;
+      }
       if (eventName === "load") {
         if (typeof selector === "function") {
           return _loadListener(selector);
@@ -117,7 +120,8 @@
         if (typeof selector !== "number") {
           throw new Error(`Expected selector to be a number but was ${selector && selector.constructor && selector.constructor.name || selector}`);
         }
-        return _loadListener(callback, selector);
+        const _cb2 = callback;
+        return _loadListener(_cb2, selector);
       }
       if (eventName === "ready") {
         if (typeof selector === "function") {
@@ -126,11 +130,20 @@
         if (typeof selector !== "number") {
           throw new Error(`Expected selector to be a number but was ${selector && selector.constructor && selector.constructor.name || selector}`);
         }
-        return _readyListener(callback, selector);
+        const _cb2 = callback;
+        return _readyListener(_cb2, selector);
+      }
+      if (["unload", "beforeunload"].includes(eventName)) {
+        if (typeof selector === "function") {
+          const _cb2 = selector;
+          window.addEventListener(eventName, _cb2);
+          return;
+        }
       }
       if (typeof selector !== "string") {
         throw new Error(`Expected selector to be a string but was ${selector && selector.constructor && selector.constructor.name || selector}`);
       }
+      const _cb = callback;
       if (typeof listen.cache[eventName] === "undefined") {
         listen.cache[eventName] = {};
       }
@@ -140,7 +153,7 @@
       if (replace) {
         listen.cache[eventName][selector] = [];
       }
-      listen.cache[eventName][selector].push(callback);
+      listen.cache[eventName][selector].push(_cb);
       if (listen.registeredEvents.indexOf(eventName) === -1) {
         listen.registeredEvents.push(eventName);
         document.addEventListener(eventName, (ev) => {
@@ -154,7 +167,7 @@
           });
         });
       }
-    };
+    }
     listen.cache = {};
     listen.registeredEvents = [];
     const uuid = () => {
@@ -197,6 +210,9 @@
     };
   })();
   var mnml_default = mnml;
+  if (window) {
+    window.mnml = mnml;
+  }
 
   // public/assets/site.ts
   mnml_default.listen("click", ".primary-nav__toggle", (ev, btn) => {
@@ -240,7 +256,7 @@
     });
   });
   mutationObserver.observe(document.documentElement, { childList: true, subtree: true });
-  window.addEventListener("unload", () => {
+  mnml_default.listen("beforeunload", () => {
     mutationObserver.disconnect();
     intersectionObserver.disconnect();
   });
