@@ -4,11 +4,15 @@
     "forceConsistentCasingInFileNames": true,
     "module": "commonjs",
     "resolveJsonModule": true,
-    "rootDirs": ["./app"],
+    "rootDirs": ["./app", "./public/assets"],
     "skipLibCheck": true,
     "strict": true,
     "target": "ESNEXT"
   },
   "exclude": ["./index.ts"],
-  "include": ["./**/*.ts", "./**/*.tsx"]
+  "include": [
+    "./node_modules/@dryan-llc/mnml.js/dist/**/*.d.ts",
+    "./**/*.ts",
+    "./**/*.tsx"
+  ]
 }

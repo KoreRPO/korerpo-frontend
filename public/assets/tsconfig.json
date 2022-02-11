@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "downlevelIteration": true,
+    "lib": ["ES2016", "DOM", "DOM.Iterable", "ES5"],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "rootDirs": ["./"],
+    "outDir": "./"
+  },
+  "exclude": ["./index.ts"],
+  "include": ["./**/*.ts", "./**/*.tsx"]
+}

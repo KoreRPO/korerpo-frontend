@@ -70,8 +70,8 @@ module.exports = ({
         ${content}
       </main>
       ${SiteFooter({ socials: { ...social_links } })}
-      <script src="https://unpkg.com/@dryan-llc/mnml.js"></script>
       <script src="/assets/site.js"></script>
+      <script src="https://unpkg.com/@dryan-llc/mnml.js" type="module"></script>
     </body>
     <!--! Font Awesome Pro 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
   </html>

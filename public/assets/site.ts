@@ -1,12 +1,12 @@
-const mnml = window.mnml || {};
+import mnml from "@dryan-llc/mnml.js";
 
-mnml.listen("click", ".primary-nav__toggle", (ev) => {
+mnml.listen("click", ".primary-nav__toggle", (ev, btn) => {
   ev.preventDefault();
   document.documentElement.classList.toggle("show-nav");
-  ev.target.blur();
+  btn.blur();
 });
 
-mnml.listen("click", '.primary-nav a[href^="#"]', (ev) => {
+mnml.listen("click", '.primary-nav a[href^="#"]', () => {
   document.documentElement.classList.remove("show-nav");
 });
 
@@ -14,8 +14,11 @@ const intersectionObserver = new IntersectionObserver(
   (entries) => {
     entries.map((entry) => {
       if (entry.isIntersecting) {
-        entry.target.src = entry.target.dataset.src;
-        intersectionObserver.unobserve(entry.target);
+        const target = entry.target as HTMLImageElement;
+        if (target.dataset.src) {
+          target.src = target.dataset.src;
+        }
+        intersectionObserver.unobserve(target);
       }
     });
   },
@@ -27,19 +30,22 @@ const intersectionObserver = new IntersectionObserver(
 );
 
 const attachObserverToImages = () => {
-  [...document.documentElement.querySelectorAll("img:not([data-observed])")].map(
-    (img) => {
-      intersectionObserver.observe(img);
-      img.dataset.observed = true;
-    }
-  );
+  [
+    ...document.documentElement.querySelectorAll("img[data-src]:not([data-observed])"),
+  ].map((img) => {
+    const imgElem = img as HTMLImageElement;
+    intersectionObserver.observe(imgElem);
+    imgElem.dataset.observed = "true";
+  });
 };
 
 attachObserverToImages();
 
 const mutationObserver = new MutationObserver((entries) => {
   entries.map((entry) => {
-    if ([...entry.addedNodes].filter((node) => node.tagName === "IMG").length) {
+    if (
+      [...entry.addedNodes].filter((node) => (node as Element).tagName === "IMG").length
+    ) {
       attachObserverToImages();
     }
   });

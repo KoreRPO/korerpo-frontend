@@ -30,3 +30,5 @@ tags.*
 _site
 dist
 src/_js
+public/assets/site.js
+
