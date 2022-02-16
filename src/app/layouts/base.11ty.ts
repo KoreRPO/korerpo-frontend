@@ -60,6 +60,15 @@ module.exports = ({
       <!-- Start of HubSpot Embed Code -->
       <script type="text/javascript" id="hs-script-loader" async defer src="//js-na1.hs-scripts.com/21430261.js"></script>
       <!-- End of HubSpot Embed Code -->
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z3DBZZT1L"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-3Z3DBZZT1L');
+      </script>
     </head>
     <body>
       <a href="#main-content" class="skip-link reader-only">
