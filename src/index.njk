@@ -41,6 +41,7 @@ eleventyComputed:
     </div>
 </section>
 
+{% if homepage.impact.testimonials %}
 <a id="results"></a>
 <section class="results">
     <div class="grid">
@@ -60,6 +61,7 @@ eleventyComputed:
         </ul>
     </div>
 </section>
+{% endif %}
 
 {% if homepage.bios %}
     <a id="about"><span class="reader-only">About KORE RPO</span></a>

@@ -1,5 +1,3 @@
-const { inspect } = require("util");
-
 const escapeChars = {
   "¢": "cent",
   "£": "pound",

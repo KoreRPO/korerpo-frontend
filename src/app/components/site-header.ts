@@ -2,17 +2,20 @@ import Logo from "./logo";
 import PrimaryNav from "./navigation";
 
 interface SiteHeaderProps {
-  sticky: boolean;
+  sticky?: boolean;
+  showTestimonials?: boolean;
 }
 
-const SiteHeader = ({ sticky }: SiteHeaderProps = { sticky: false }) => `
+const SiteHeader = (
+  { sticky, showTestimonials }: SiteHeaderProps = { sticky: false }
+) => `
   <header${sticky ? ' class="sticky"' : ""}>
     <div class="container">
       <a href="/" class="site-brand">
         ${Logo()}
         <span class="reader-only">KORE RPO</span>
       </a>
-      ${PrimaryNav()}
+      ${PrimaryNav({ showTestimonials })}
     </div>
   </header>
 `;

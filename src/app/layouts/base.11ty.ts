@@ -13,6 +13,7 @@ interface PageProps {
     twitter?: string;
   };
   html_classes?: string;
+  homepage: { impact: { testimonials?: any[] } } | undefined;
 }
 
 const defaultDescription =
@@ -26,6 +27,7 @@ module.exports = ({
   social_image = "/assets/social-image.png",
   social_links = {},
   html_classes = "",
+  homepage = undefined,
 }: PageProps) => {
   const mnmlCSS =
     process.env.ELEVENTY_ENV === "dev"
@@ -34,7 +36,6 @@ module.exports = ({
   const seo_title = [title || "KORE RPO", "KORE RPO"]
     .filter((val, index, self) => self.indexOf(val) === index)
     .join(" | ");
-
   return `
   <!doctype html>
   <html lang="${lang}" data-theme="light" class="${html_classes}">
@@ -74,7 +75,13 @@ module.exports = ({
       <a href="#main-content" class="skip-link reader-only">
         Jump to content
       </a>
-      ${SiteHeader()}
+      ${SiteHeader({
+        showTestimonials:
+          homepage &&
+          homepage.impact &&
+          homepage.impact.testimonials &&
+          homepage.impact.testimonials.length > 0,
+      })}
       <main id="main-content" class="container">
         ${content}
       </main>
