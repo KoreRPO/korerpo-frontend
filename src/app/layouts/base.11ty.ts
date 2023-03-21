@@ -32,7 +32,7 @@ module.exports = ({
   const mnmlCSS =
     process.env.ELEVENTY_ENV === "dev"
       ? "/assets/mnml-plus-opencolor.css"
-      : "https://unpkg.com/@dryan-llc/mnml.css/dist/mnml-plus-opencolor.css";
+      : "https://unpkg.com/@dryan-llc/mnml.css@4.0.4/dist/mnml-plus-opencolor.css";
   const seo_title = [title || "KORE RPO", "KORE RPO"]
     .filter((val, index, self) => self.indexOf(val) === index)
     .join(" | ");
