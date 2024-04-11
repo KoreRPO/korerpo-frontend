@@ -1,0 +1,43 @@
+<div class="primary-nav__wrapper">
+  <button class="primary-nav__toggle no-bg" tabindex="-1" aria-hidden="true">
+    Menu
+    <icon-menu></icon-menu>
+  </button>
+  <nav aria-label="Main menu" class="primary-nav">
+    <button class="primary-nav__toggle no-bg" tabindex="-1" aria-hidden="true">
+      Close
+      <icon-x></icon-x>
+    </button>
+    <a href="/#approach">Approach</a>
+    <a href="/#results" webc:if="showTestimonials">Results</a>
+    <a href="/#about">About</a>
+    <a href="/contact" class="button outline blue-medium"> Get Started </a>
+  </nav>
+</div>
+
+<script>
+  (() => {
+    if (customElements.get("korerpo-navigation")) return;
+
+    class KoreRPONavigation extends HTMLElement {
+      connectedCallback() {
+        this.addEventListener("click", (event) => {
+          const toggle = event.target.closest(".primary-nav__toggle");
+          if (toggle) {
+            ev.preventDefault();
+            document.documentElement.classList.toggle("show-nav");
+            toggle.blur();
+            return;
+          }
+
+          const anchor = event.target.closest('.primary-nav a[href^="#"]');
+          if (anchor) {
+            document.documentElement.classList.remove("show-nav");
+          }
+        });
+      }
+    }
+
+    customElements.define("korerpo-navigation", KoreRPONavigation);
+  })();
+</script>

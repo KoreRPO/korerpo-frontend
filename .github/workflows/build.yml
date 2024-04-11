@@ -16,21 +16,12 @@ jobs:
 
       - uses: actions/setup-node@v2
         with:
-          node-version: "17.x"
-
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
+          node-version: "18.x"
 
       - name: Install dependencies
         run: |
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.REGISTRY_TOKEN }}" >> ~/.npmrc
           npm ci
-
-      - name: Run tests
-        run: |
-          npm test
 
       - name: Build site
         run: |

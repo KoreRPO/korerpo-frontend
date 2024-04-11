@@ -1,3 +1,5 @@
+import pluginWebc from "@11ty/eleventy-plugin-webc";
+
 const escapeChars = {
   "¢": "cent",
   "£": "pound",
@@ -26,14 +28,14 @@ const escapeHTML = (str) => {
   });
 };
 
-module.exports = function (config) {
+export default function (config) {
   config.addPassthroughCopy({ public: "./" });
 
-  config.setBrowserSyncConfig({
-    files: ["_site/**/*"],
+  config.addPlugin(pluginWebc, {
+    components: "_components/**/*",
   });
 
-  config.addWatchTarget("./src/_js/**/*");
+  config.addWatchTarget("./src/**/*");
 
   config.addFilter("debug", (content) => {
     return `<div style="max-width: 100%; overflow-x: auto"><pre>${escapeHTML(
@@ -41,13 +43,25 @@ module.exports = function (config) {
     )}</pre></div>`;
   });
 
+  config.addGlobalData(
+    "copyright",
+    () =>
+      `&copy; ${[...new Set([2022, new Date().getFullYear()])].join(
+        "-"
+      )} KORE RPO. All Rights Reserved.`
+  );
+
+  config.setServerOptions({
+    port: 9000,
+  });
+
   return {
-    templateFormats: ["md", "njk", "jpg", "png", "gif", "liquid"],
+    templateFormats: ["webc"],
     dir: {
-      input: "src",
+      input: "./src",
       output: "_site",
-      layouts: "_js/layouts",
-      data: "_js/data",
+      layouts: "../_layouts",
+      data: "../_data",
     },
   };
-};
+}

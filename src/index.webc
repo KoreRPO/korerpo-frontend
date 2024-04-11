@@ -1,0 +1,113 @@
+---
+---
+
+<section class="jumbotron container--grid">
+  <div class="jumbotron__text" @html="homepage?.jumbotron.text_as_html"></div>
+  <p class="jumbotron__actions">
+    <a
+      :href="`${homepage.jumbotron.button_action.replace('https://www.korerpo.com', '')}`"
+      class="button white outline"
+      @text="homepage.jumbotron.button_text"
+    ></a>
+  </p>
+</section>
+
+<a id="who-is-kore-rpo"></a>
+<section :class="`who-is ${homepage.who_is.image_meta ? ` who-is--with-image` : ``}`">
+  <div class="who-is__text">
+    <h1 @text="homepage.who_is.hed"></h1>
+    <template webc:nokeep @html="homepage.who_is.content_as_html"></template>
+  </div>
+  <figure class="who-is__image" webc:if="homepage.who_is.image_meta">
+    <img
+      alt=""
+      :width="homepage.who_is.image_meta.metadata.dimensions.width"
+      :height="homepage.who_is.image_meta.metadata.dimensions.height"
+      :src="homepage.who_is.image_meta.url"
+      decoding="async"
+      loading="lazy"
+    />
+  </figure>
+</section>
+
+<a id="approach"></a>
+<section class="approach container--grid">
+  <h2 @text="homepage.approach.hed"></h2>
+  <div class="grid">
+    <div class="approach__card" webc:for="item of homepage.approach.approaches">
+      <h3 @text="item.label"></h3>
+      <p @text="item.content"></p>
+    </div>
+  </div>
+</section>
+
+<a id="results" webc:if="homepage.impact.testimonials"></a>
+<section class="results" webc:if="homepage.impact.testimonials">
+  <div class="grid">
+    <h2 @text="homepage.impact.hed"></h2>
+    <ul>
+      <li webc:for="testimonial of homepage.impact.testimonials">
+        <blockquote>
+          <p @text="testimonial.content"></p>
+          <cite>
+            <b @text="testimonial.name"></b> -
+            <template webc:nokeep @text="testimonial.position"></template><br />
+            <template webc:nokeep @text="testimonial.company"></template>
+          </cite>
+        </blockquote>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<a id="about" webc:if="homepage.bios?.length"
+  ><span class="reader-only">About KORE RPO</span></a
+>
+<section class="about container--grid" webc:if="homepage.bios?.length">
+  <div class="bio" webc:for="bio of homepage.bios">
+    <figure class="bio__image" webc:if="bio.image_meta">
+      <img
+        alt=""
+        :width="bio.image_meta.metadata.dimensions.width"
+        :height="bio.image_meta.metadata.dimensions.height"
+        :src="bio.image_meta.url"
+        decoding="async"
+        loading="lazy"
+      />
+    </figure>
+    <div class="bio__text">
+      <header>
+        <p class="bio__position" @text="bio.position"></p>
+        <p class="bio__name" @text="bio.name"></p>
+        <a
+          :href="bio.linkedin_link"
+          target="_blank"
+          rel="noopener noreferrer"
+          webc:if="bio.linkedin_link"
+        >
+          <span class="reader-only" @text="`${bio.name} on LinkedIn`"></span>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+            <path
+              fill="currentColor"
+              d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"
+            />
+          </svg>
+        </a>
+      </header>
+      <div class="bio__content" @raw="bio.content_as_html"></div>
+    </div>
+  </div>
+</section>
+
+<a id="get-started"></a>
+<section class="cta">
+  <h2 @text="homepage.cta.hed"></h2>
+  <p webc:if="homepage.cta.dek" @text="homepage.cta.dek"></p>
+  <p class="cta__actions">
+    <a
+      class="button blue-medium"
+      :href="homepage.cta.button_action.replace('https://www.korerpo.com', '')"
+      @text="homepage.cta.button_text"
+    ></a>
+  </p>
+</section>

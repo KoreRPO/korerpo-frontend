@@ -1,6 +1,6 @@
 import sanity from "@korerpo/cms";
 
-module.exports = async () => {
+export default async () => {
   const page = await sanity.homepage({});
   return page;
 };

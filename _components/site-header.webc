@@ -1,0 +1,174 @@
+<header webc:root="override">
+  <div class="container">
+    <a href="/" class="site-brand">
+      <korerpo-logo></korerpo-logo>
+      <span class="reader-only">KORE RPO</span>
+    </a>
+    <korerpo-navigation
+      :@show-testimonials="this.webc.attributes.showTestimonials"
+    ></korerpo-navigation>
+  </div>
+</header>
+
+<style>
+  body > header {
+    backdrop-filter: blur(0.125rem);
+    background-color: rgb(255 255 255 / 95%);
+    font-family: var(--korerpo--font--oswald);
+    padding-block: calc(var(--mnml--spacing) * 2);
+  }
+
+  body > header .container {
+    align-items: center;
+    display: grid;
+    row-gap: var(--mnml--spacing);
+    column-gap: var(--mnml--spacing--double);
+    grid-auto-columns: auto;
+    grid-auto-flow: column;
+    grid-template-columns: auto 1fr;
+    padding-inline: calc(var(--mnml--spacing) * 2);
+  }
+
+  body > header korerpo-navigation {
+    margin-inline-start: auto;
+  }
+
+  .logo path {
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+  }
+
+  .logo__kore {
+    fill: #6396ff;
+  }
+
+  :is(.logo__people, .logo__rpo) {
+    fill: #0e1e2e;
+  }
+
+  .primary-nav__wrapper {
+    --mnml--link--text-color: var(--korerpo--color--blue--dark);
+    --mnml--link--text-color--visited: var(--korerpo--color--blue--dark);
+    --mnml--link--text-color--hover: var(--korerpo--color--blue--medium);
+
+    font-size: 1.25rem;
+    letter-spacing: 0.05rem;
+    margin-inline-start: auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .primary-nav {
+    transition-duration: var(--mnml--animation-duration);
+    transition-property: background-color, box-shadow, padding;
+  }
+
+  .primary-nav__toggle {
+    --mnml--button--padding-block: 0;
+    --mnml--button--padding-inline: 0;
+
+    align-items: center;
+    color: var(--korerpo--color--blue--medium);
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    font-size: 1rem;
+    font-weight: 400;
+    gap: calc(var(--mnml--spacing) * 0.5);
+    letter-spacing: 0;
+    min-block-size: 2.6875rem;
+    text-transform: none;
+  }
+
+  .primary-nav__toggle svg {
+    block-size: 1rem;
+    inline-size: auto;
+  }
+
+  @media (width < 48rem) {
+    .primary-nav {
+      --mnml--link--text-color: var(--korerpo--color--blue--pale);
+      --mnml--link--text-color--visited: var(--korerpo--color--blue--pale);
+      --mnml--link--text-color--hover: white;
+
+      background: var(--korerpo--color--blue--dark);
+      box-shadow: 0 4px 10px rgb(0 0 0 / 25%);
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      row-gap: calc(var(--mnml--spacing) * 2);
+      column-gap: calc(var(--mnml--spacing) * 2);
+      min-block-size: 70vh;
+      min-block-size: 70dvh;
+      min-inline-size: calc(100vw - var(--mnml--spacing));
+      padding: calc(var(--mnml--spacing) * 2);
+      padding-inline-end: var(--mnml--spacing);
+      position: fixed;
+      inset-inline-end: 0;
+      inset-block-start: 0;
+      transform: translateY(-100vh) translateZ(0);
+      z-index: 1;
+    }
+
+    .show-nav .primary-nav,
+    .primary-nav:focus-within {
+      transform: translateY(0) translateZ(0);
+    }
+
+    .primary-nav .primary-nav__toggle {
+      color: white;
+      margin-inline-start: auto;
+    }
+
+    .primary-nav > a {
+      margin-inline-end: auto;
+    }
+
+    .primary-nav > .button.blue-medium.outline {
+      --mnml--button--text-color: white;
+      --mnml--button--border-color: white;
+    }
+  }
+
+  @media (22.5rem <= width < 48rem) {
+    .primary-nav {
+      min-inline-size: calc(22.5rem - var(--mnml--spacing));
+    }
+  }
+
+  @media (37.5rem <= height < 48rem) {
+    .primary-nav {
+      min-block-size: calc(37.5rem - var(--mnml--spacing));
+    }
+  }
+
+  @media (width >= 48rem) {
+    .primary-nav {
+      align-items: center;
+      display: grid;
+      row-gap: var(--mnml--spacing);
+      column-gap: calc(var(--mnml--spacing) * 2);
+      grid-auto-columns: auto;
+      grid-auto-flow: column;
+    }
+
+    .primary-nav__toggle {
+      display: none;
+    }
+  }
+
+  .primary-nav .button {
+    white-space: nowrap;
+  }
+
+  .site-brand {
+    display: block;
+    inline-size: 11rem;
+    block-size: 2.25rem;
+
+    svg {
+      block-size: auto;
+      inline-size: 100%;
+    }
+  }
+</style>

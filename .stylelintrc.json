@@ -1,0 +1,43 @@
+{
+  "extends": ["stylelint-config-standard-scss"],
+  "plugins": ["stylelint-use-logical-spec", "stylelint-rem-over-px"],
+  "validate": ["css", "scss"],
+  "rules": {
+    "declaration-block-no-redundant-longhand-properties": null,
+    "selector-id-pattern": [
+      "^[a-z][a-z0-9-]+$",
+      {
+        "message": "IDs must be in kebab-case"
+      }
+    ],
+    "selector-class-pattern": [
+      "^.[a-z]([a-z0-9-]+)?(__([a-z0-9]+-?)+)?(__([a-z0-9]+-?)+)?(--([a-z0-9]+-?)+){0,2}$",
+      {
+        "message": "Class names must be in BEM format"
+      }
+    ],
+    "custom-property-pattern": [
+      "^((korerpo|mnml|button)--|__)([a-z][a-z0-9]*)(--?[a-z0-9]+)*$",
+      {
+        "message": "Custom property names must be in kebab-case and begin with 'mnml-', 'korerpo-', 'button-', or '__'"
+      }
+    ],
+    "keyframes-name-pattern": [
+      "^--korerpo--animation--([a-z0-9-]+)$",
+      {
+        "message": "Keyframe names must be in kebab-case and start with '--korerpo--animation-'"
+      }
+    ],
+    "scss/percent-placeholder-pattern": [
+      "^.[a-z]([a-z0-9-]+)?(__([a-z0-9]+-?)+)?(--([a-z0-9]+-?)+){0,2}$",
+      {
+        "message": "Placeholder names must be in BEM format"
+      }
+    ],
+    "liberty/use-logical-spec": true,
+    "rem-over-px/rem-over-px": [
+      true,
+      { "ignoreFunctions": ["url", "calc"], "fontSize": 16 }
+    ]
+  }
+}

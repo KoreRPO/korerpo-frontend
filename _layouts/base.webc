@@ -1,0 +1,48 @@
+<!doctype html>
+  <html lang="en" data-theme="light" :class="html_classes ?? ''">
+    <head>
+      <meta charset="utf-8">
+      <title @text="seo_title || title"></title>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <meta property="og:title" :content="seo_title || title">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="description" property="og:description" :content="description || ''">
+      <meta name="twitter:card" content="summary_large_image">
+      <meta property="og:image" :content="`${social_image?.startsWith("https://") || social_image?.startsWith("http://") ? social_image : "https://www.korerpo.com" + social_image}`" webc:if="social_image">
+      <meta property="og:image" content="https://www.korerpo.com/assets/social-image.png" webc:else>
+      <meta name="theme-color" content="#1658B3">
+      <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&display=swap" webc:keep>
+      <link rel="stylesheet" href="https://unpkg.com/@dryan-llc/mnml.css@7" webc:keep>
+      <link rel="stylesheet" href="screen.css">
+      <link
+      rel="stylesheet"
+      :href="getBundleFileUrl('css')"
+      webc:keep
+      id="compiled-styles"
+    />
+
+      <!-- Start of HubSpot Embed Code -->
+      <script type="text/javascript" id="hs-script-loader" async defer src="//js-na1.hs-scripts.com/21430261.js" webc:keep></script>
+      <!-- End of HubSpot Embed Code -->
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z3DBZZT1L" webc:keep></script>
+      <script webc:keep>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-3Z3DBZZT1L');
+      </script>
+    </head>
+    <body>
+      <a href="#main-content" class="skip-link reader-only">
+        Jump to content
+      </a>
+      <site-header :@show-testimonials="homepage?.impact?.testimonials?.length"></site-header>
+      <main id="main-content" class="container--grid" @raw="content"></main>
+      <site-footer></site-footer>
+    </body>
+    <!--! Font Awesome Pro 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  </html>

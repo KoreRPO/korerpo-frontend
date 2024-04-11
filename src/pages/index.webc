@@ -1,0 +1,35 @@
+---js
+{
+  pagination: {
+    data: "pages",
+    size: 1,
+    alias: "static_page"
+  },
+  permalink: function(context) {
+    return `/${context.static_page.slug.current}/`;
+  },
+  eleventyImports: {
+    collections: [
+      "pages"
+    ]
+  },
+  eleventyComputed: {
+    html_classes: (context) => `static-page static-page--${context.static_page.slug.current}`,
+  },
+}
+---
+
+<h1 @text="static_page.title"></h1>
+
+<div class="user-content" @html="static_page.content_as_html" webc:nokeep></div>
+
+<style>
+  .user-content {
+    max-inline-size: 60ch;
+  }
+
+  .static-page body > main {
+    padding-block: var(--mnml--spacing);
+    padding-inline: calc(var(--mnml--spacing) * 2);
+  }
+</style>
