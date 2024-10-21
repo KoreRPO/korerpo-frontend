@@ -11,7 +11,10 @@
     <a href="/#approach">Approach</a>
     <a href="/#results" webc:if="showTestimonials">Results</a>
     <a href="/#about">About</a>
-    <a href="tel:+19096579666">(909) 657-9666</a>
+    <a href="tel:+19096579666">
+      Contact Us <br />
+      (909) 657-9666
+    </a>
     <a href="/contact" class="button outline blue-medium"> Get Started </a>
   </nav>
 </div>
@@ -49,6 +52,7 @@
 
     a[href^="tel:" i] {
       text-decoration: none;
+      text-align: center;
     }
   }
 </style>
