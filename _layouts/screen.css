@@ -103,6 +103,7 @@ body > main {
   font-size: clamp(1.5rem, 4vw, 3rem);
   font-weight: 600;
   max-inline-size: 41rem;
+  text-wrap: balance;
 }
 
 .jumbotron p {

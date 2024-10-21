@@ -43,6 +43,7 @@
       <site-header :@show-testimonials="homepage?.impact?.testimonials?.length"></site-header>
       <main id="main-content" class="container--grid" @raw="content"></main>
       <site-footer></site-footer>
+      <script id="compiled-scripts" :src="getBundleFileUrl('js')" webc:keep></script>
     </body>
     <!--! Font Awesome Pro 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
   </html>

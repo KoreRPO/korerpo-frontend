@@ -1,16 +1,17 @@
 <div class="primary-nav__wrapper">
-  <button class="primary-nav__toggle no-bg" tabindex="-1" aria-hidden="true">
+  <button class="primary-nav__toggle no-bg">
     Menu
     <icon-menu></icon-menu>
   </button>
   <nav aria-label="Main menu" class="primary-nav">
-    <button class="primary-nav__toggle no-bg" tabindex="-1" aria-hidden="true">
+    <button class="primary-nav__toggle no-bg">
       Close
       <icon-x></icon-x>
     </button>
     <a href="/#approach">Approach</a>
     <a href="/#results" webc:if="showTestimonials">Results</a>
     <a href="/#about">About</a>
+    <a href="tel:+19096579666">(909) 657-9666</a>
     <a href="/contact" class="button outline blue-medium"> Get Started </a>
   </nav>
 </div>
@@ -24,7 +25,7 @@
         this.addEventListener("click", (event) => {
           const toggle = event.target.closest(".primary-nav__toggle");
           if (toggle) {
-            ev.preventDefault();
+            event.preventDefault();
             document.documentElement.classList.toggle("show-nav");
             toggle.blur();
             return;
@@ -41,3 +42,13 @@
     customElements.define("korerpo-navigation", KoreRPONavigation);
   })();
 </script>
+
+<style>
+  korerpo-navigation {
+    display: flow-root;
+
+    a[href^="tel:" i] {
+      text-decoration: none;
+    }
+  }
+</style>
