@@ -1,10 +1,9 @@
-.user-content {
-    max-inline-size: 60ch;
-  }
+korerpo-navigation {
+    display: flow-root;
 
-  .static-page body > main {
-    padding-block: var(--mnml--spacing);
-    padding-inline: calc(var(--mnml--spacing) * 2);
+    a[href^="tel:" i] {
+      text-decoration: none;
+    }
   }
 body > header {
     backdrop-filter: blur(0.125rem);
@@ -357,6 +356,7 @@ body > main {
   font-size: clamp(1.5rem, 4vw, 3rem);
   font-weight: 600;
   max-inline-size: 41rem;
+  text-wrap: balance;
 }
 
 .jumbotron p {
