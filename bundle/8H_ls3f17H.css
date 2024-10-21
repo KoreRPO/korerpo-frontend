@@ -11,6 +11,7 @@ korerpo-navigation {
 
     a[href^="tel:" i] {
       text-decoration: none;
+      text-align: center;
     }
   }
 body > header {
